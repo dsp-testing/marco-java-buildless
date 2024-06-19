@@ -12,7 +12,23 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>JFrog mirror for Maven Central</name>
+      <url>https://aibaars1.jfrog.io/artifactory/maven-libs-snapshot</url>
+    </repository>
+  </repositories>
 
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <name>maven-libs-snapshot</name>
+      <url>https://aibaars1.jfrog.io/artifactory/maven-libs-snapshot</url>
+    </pluginRepository>
+  </pluginRepositories>
+    
     <build>
         <plugins>
             <plugin>
