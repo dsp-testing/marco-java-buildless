@@ -43,7 +43,7 @@ jobs:
 
     - name: Setup proxy for registries
       id: proxy
-      uses: github/codeql-action/start-proxy@main
+      uses: github/codeql-action/start-proxy@marcogario/proxy_64
       with:
         registries_credentials: ${{ secrets.GH_REGISTRIES_PROXY }}
         
