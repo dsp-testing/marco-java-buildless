@@ -46,3 +46,15 @@ jobs:
       uses: github/codeql-action/start-proxy@marcogario/proxy_64
       with:
         registries_credentials: ${{ secrets.GH_REGISTRIES_PROXY }}
+        
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      env:
+        CODEQL_PROXY_HOST: ${{ steps.proxy.outputs.proxy_host }}
+        CODEQL_PROXY_PORT: ${{ steps.proxy.outputs.proxy_port }}
+        CODEQL_PROXY_CA_CERTIFICATE: ${{ steps.proxy.outputs.proxy_ca_certificate }}
+      with:
+        category: ${{ matrix.category }}
