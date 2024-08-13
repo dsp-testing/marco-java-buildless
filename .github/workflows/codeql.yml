@@ -29,7 +29,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@marcogario/proxy_64
       with:
         tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.18.1/codeql-bundle-linux64.tar.gz
         languages: ${{ matrix.language }}
@@ -43,7 +43,7 @@ jobs:
 
     - name: Setup proxy for registries
       id: proxy
-      uses: github/codeql-action/start-proxy@main
+      uses: github/codeql-action/start-proxy@marcogario/proxy_64
       with:
         registry_secrets: ${{ secrets.DEPENDABOT_CREDENTIALS }}
         
