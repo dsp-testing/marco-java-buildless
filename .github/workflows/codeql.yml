@@ -25,36 +25,6 @@ jobs:
       CODE_SCANNING_IS_STEADY_STATE_DEFAULT_SETUP: true
       CODE_SCANNING_WORKFLOW_FILE: ${{ github.event.inputs.code_scanning_workflow_file }}
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@marcogario/proxy_64
-      with:
-        tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.18.1/codeql-bundle-linux64.tar.gz
-        languages: ${{ matrix.language }}
-        build-mode: ${{ matrix.build-mode }}
-        queries: "" # Default query suite
-        config: |
-          default-setup:
-            org:
-              model-packs: [ ${{ github.event.inputs.code_scanning_codeql_packs }} ]
-          threat-models: [  ]
-
-    - name: Setup proxy for registries
-      id: proxy
-      uses: github/codeql-action/start-proxy@marcogario/proxy_64
-      with:
-        registry_secrets: ${{ secrets.DEPENDABOT_CREDENTIALS }}
-        
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
-      env:
-        CODEQL_PROXY_HOST: ${{ steps.proxy.outputs.proxy_host }}
-        CODEQL_PROXY_PORT: ${{ steps.proxy.outputs.proxy_port }}
-        CODEQL_PROXY_CA_CERTIFICATE: ${{ steps.proxy.outputs.proxy_ca_certificate }}
-      with:
-        category: ${{ matrix.category }}
+      - name: Echo GITHUB_REGISTRIES_PROXY
+        run: echo ${{ secrets.GITHUB_REGISTRIES_PROXY }} | sha1sum
+    
