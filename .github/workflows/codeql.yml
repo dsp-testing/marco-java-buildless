@@ -45,7 +45,8 @@ jobs:
       id: proxy
       uses: github/codeql-action/start-proxy@main
       with:
-        registry_secrets: ${{ secrets.DEPENDABOT_CREDENTIALS }}
+        # registry_secrets: ${{ secrets.DEPENDABOT_CREDENTIALS }}
+        registries_credentials: ${{ secrets.REGISTRIES_PROXY }}
         
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
