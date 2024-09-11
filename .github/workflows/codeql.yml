@@ -43,7 +43,7 @@ jobs:
 
     - name: Setup proxy for registries
       id: proxy
-      uses: github/codeql-action/start-proxy@marcogario/proxy_64
+      uses: github/codeql-action/start-proxy@main
       with:
         registry_secrets: ${{ secrets.DEPENDABOT_CREDENTIALS }}
         
