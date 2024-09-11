@@ -29,7 +29,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@marcogario/proxy_64
+      uses: github/codeql-action/init@main
       with:
         tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.18.1/codeql-bundle-linux64.tar.gz
         languages: ${{ matrix.language }}
