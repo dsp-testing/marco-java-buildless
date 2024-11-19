@@ -26,6 +26,15 @@ jobs:
             category: /language:java-kotlin
             build-mode: none
             runner: '["macos-latest"]'
+          - language: java-kotlin
+            category: /language:java-kotlin
+            build-mode: none
+            runner: '["ubuntu-latest"]'
+          - language: java-kotlin
+            category: /language:java-kotlin
+            build-mode: none
+            runner: '["windows-latest"]'
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -43,9 +52,8 @@ jobs:
               model-packs: [ ${{ github.event.inputs.code_scanning_codeql_packs }} ]
           threat-models: [  ]
     - name: Setup proxy for registries
-      if: runner.os == 'Linux'
       id: proxy
-      uses: github/codeql-action/start-proxy@v3
+      uses: github/codeql-action/start-proxy@marcogario/per-platform-proxy
       with:
         registries_credentials: ${{ secrets.GITHUB_REGISTRIES_PROXY }}
 
