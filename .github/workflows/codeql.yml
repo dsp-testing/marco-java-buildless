@@ -53,7 +53,7 @@ jobs:
           threat-models: [  ]
     - name: Setup proxy for registries
       id: proxy
-      uses: github/codeql-action/start-proxy@marcogario/per-platform-proxy
+      uses: github/codeql-action/start-proxy@main
       with:
         registries_credentials: ${{ secrets.GITHUB_REGISTRIES_PROXY }}
 
