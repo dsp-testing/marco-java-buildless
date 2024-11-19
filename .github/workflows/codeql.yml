@@ -25,7 +25,7 @@ jobs:
           - language: java-kotlin
             category: /language:java-kotlin
             build-mode: none
-            runner: '["ubuntu-latest"]'
+            runner: '["macos-latest"]'
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
